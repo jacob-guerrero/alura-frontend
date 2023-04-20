@@ -15,10 +15,11 @@
         pincel.fillStyle = "grey";
         pincel.fillRect(0,0,600,400); 
 
-        function dibujarCirculo(evento){
+        const colors = ["blue", "red", "green"];
+        function dibujarCirculo(evento) {
             var x = evento.pageX - pantalla.offsetLeft;
             var y = evento.pageY - pantalla.offsetTop;    
-            pincel.fillStyle = "blue";
+            pincel.fillStyle = colors[i];
             pincel.beginPath();
             pincel.arc(x,y,10,0,2*3.14);
             pincel.fill();
@@ -26,6 +27,21 @@
         }
 
         pantalla.onclick = dibujarCirculo;
+
+        let i = 0;
+        function alterarColor() {
+            alert("Funcionó");
+
+            i+=1;
+            if( i === 3) {
+                i = 0;
+            }
+            console.log(i);
+
+            return false;
+        }
+
+        pantalla.oncontextmenu = alterarColor;
 
     </script> 
 </body>
