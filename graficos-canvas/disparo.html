@@ -60,7 +60,8 @@
                 (x > xAleatorio - radio) &&
                 (y < yAleatorio + radio) &&
                 (y > yAleatorio - radio)) {
-                    alert('Tiro certero');
+                    disenharCircunferencia(x, y, 5, 'black');
+                    setTimeout(() => {alert('Tiro certero')}, 10);
                 }
         }
 
