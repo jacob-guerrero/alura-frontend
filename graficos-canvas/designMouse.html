@@ -17,16 +17,22 @@
         pincel.fillRect(0, 0, 600, 400);
 
         /* Crear paleta de colores */
-        let position = 0;
-        const colors = ["red", "green", "blue"]
-        function dibujarRect(color, size) {
+        let positionControl = 0;
+        const sizeControl = 50;
+        const colors = ["red", "green", "blue"];
+        let currentColor = "blue";
+        function dibujarRect(color, sizeControl) {
             pincel.fillStyle = color;
-            pincel.fillRect(position, 0, size, size);
-            position += size;
+            pincel.fillRect(positionControl, 0, sizeControl, sizeControl);
+            positionControl += sizeControl;
         }
         dibujarRect("red", 50);
         dibujarRect("green", 50);
         dibujarRect("blue", 50);
+        
+        function cambioColor() {
+
+        }
 
 
         var puedoDibujar = false;
@@ -36,10 +42,13 @@
             if(puedoDibujar) {
                 var x = evento.pageX - pantalla.offsetLeft;
                 var y = evento.pageY - pantalla.offsetTop;
-                if ((x <= position) && (y <= 50)) {
+
+                // Validacion de dibujo permitido
+                if ((x <= positionControl) && (y <= sizeControl)) {
                     return
                 }
-                pincel.fillStyle = 'blue';
+
+                pincel.fillStyle = currentColor;
                 pincel.beginPath();
                 pincel.arc(x, y, 5, 0, 2 * 3.14);
                 pincel.fill();
@@ -49,7 +58,17 @@
 
         pantalla.onmousemove = dibujarCirculo;
 
-        function habilitarDibujar() {
+        function habilitarDibujar(evento) {
+            /* Control de colores */
+            var x = evento.pageX - pantalla.offsetLeft;
+            var y = evento.pageY - pantalla.offsetTop;
+            if(x < sizeControl) {
+                currentColor = colors[0];
+            } else if(x < (sizeControl*2)) {
+                currentColor = colors[1];
+            } else if (x < (sizeControl*3)) {
+                currentColor = colors[2];
+            }
 
             puedoDibujar = true;
         }
