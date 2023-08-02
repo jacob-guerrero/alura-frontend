@@ -25,4 +25,4 @@ console.log(paisesDisponibles[0]);
 console.log(ciudadesDisponibles[0]);
 
 paisesDisponibles.splice(1,2,'Venezuela');
-console.log(paisesDisponibles)
+console.log(paisesDisponibles);
