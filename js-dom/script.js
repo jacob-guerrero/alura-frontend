@@ -1,47 +1,58 @@
-const btn = document.querySelector("[data-form-btn]");
+( () => {   
+    const btn = document.querySelector("[data-form-btn]");
 
-const createTask = (evento) => {
-    evento.preventDefault();
-    const input = document.querySelector("[data-form-input]");
-    const value = input.value;
-    const list = document.querySelector("[data-list]");
-    const task = document.createElement('li');
-    task.classList.add("card");
-    input.value = "";
+    const createTask = (evento) => {
+        evento.preventDefault();
+        const input = document.querySelector("[data-form-input]");
+        const value = input.value;
+        const list = document.querySelector("[data-list]");
+        const task = document.createElement('li');
+        task.classList.add("card");
+        input.value = "";
 
-    console.log(checkComplete());
-    const taskContent = document.createElement("div");
-    const titleTask = document.createElement('span');
-    titleTask.classList.add("task");
-    titleTask.innerText = value;
-    const trashIcon = document.createElement("i");
-    trashIcon.classList.add("fas", "fa-trash-alt", "trashIcon", "icon");
+        const taskContent = document.createElement("div");
+        const titleTask = document.createElement('span');
+        titleTask.classList.add("task");
+        titleTask.innerText = value;
 
-    taskContent.appendChild(checkComplete());
-    taskContent.appendChild(titleTask);
-    taskContent.appendChild(trashIcon);
+        taskContent.appendChild(checkComplete());
+        taskContent.appendChild(titleTask);
 
-    // task.innerHTML = content;
-    task.appendChild(taskContent);
-    list.appendChild(task);
-};
+        task.appendChild(taskContent);
+        task.appendChild(deleteIcon());
+        list.appendChild(task);
+    };
 
-console.log(btn);
+    console.log(btn);
 
-//listener
-btn.addEventListener("click", createTask);
+    //listener
+    btn.addEventListener("click", createTask);
 
-const checkComplete = () => {
-    const i = document.createElement("i");
-    i.classList.add("far", "fa-check-square", "icon");
-    i.addEventListener("click", completeTask);
+    const checkComplete = () => {
+        const i = document.createElement("i");
+        i.classList.add("far", "fa-check-square", "icon");
+        i.addEventListener("click", completeTask);
 
-    return i
-}
+        return i
+    }
 
-const completeTask = (event) => {
-    const element = event.target;
-    element.classList.toggle("fas");
-    element.classList.toggle("completeIcon");
-    element.classList.toggle("far");
-}
+    const completeTask = (event) => {
+        const element = event.target;
+        element.classList.toggle("fas");
+        element.classList.toggle("completeIcon");
+        element.classList.toggle("far");
+    }
+
+    const deleteIcon = () => {
+        const i = document.createElement("i");
+        i.classList.add("fas", "fa-trash-alt", "trashIcon", "icon");
+        i.addEventListener("click", deleteTask);
+
+        return i
+    }
+
+    const deleteTask = (event) => {
+        const parent = event.target.parentElement;
+        parent.remove();
+    }
+})();
