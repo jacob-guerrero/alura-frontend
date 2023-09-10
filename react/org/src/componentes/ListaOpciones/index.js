@@ -5,16 +5,6 @@ const ListaOpciones = (props) => {
   // return <option></option>
   // })
 
-  const equipos = [
-    "Programación",
-    "Front End",
-    "Data Science",
-    "DevOps",
-    "UX y Diseño",
-    "Móvil",
-    "Innovación y Gestión",
-  ];
-
   const manejarCambio = (e) => {
     console.log("cambio");
     props.actualizarValor(e.target.value);
@@ -27,7 +17,7 @@ const ListaOpciones = (props) => {
         <option value="" disabled defaultValue="" hidden>
           Seleccionar Equipo...
         </option>
-        {equipos.map((equipo, index) => (
+        {props.equipos.map((equipo, index) => (
           <option key={index} value={equipo}>
             {equipo}
           </option>
