@@ -1,21 +1,25 @@
-import "./Equipo.css"
+import "./Equipo.css";
+import Colaborador from "../Colaborador";
 
 const Equipo = (props) => {
-    //Destructuracion
-    const {colorPrimario,  colorSecundario, titulo} = props.datos
+  //Destructuracion
+  const { colorPrimario, colorSecundario, titulo } = props.datos;
 
-    const obj = {
-        backgroundColor: colorSecundario
-    }
+  const obj = {
+    backgroundColor: colorSecundario,
+  };
 
-    const estiloTitulo = {borderColor: colorPrimario}
+  const estiloTitulo = { borderColor: colorPrimario };
 
-    return <section className="equipo" style={obj}>
-        <h3 style={estiloTitulo}>{titulo}</h3>
-        <div className="colaboradores">
-
-        </div>
+  return (
+    <section className="equipo" style={obj}>
+      <h3 style={estiloTitulo}>{titulo}</h3>
+      <div className="colaboradores">
+        <Colaborador />
+        <Colaborador />
+      </div>
     </section>
-}
+  );
+};
 
-export default Equipo
+export default Equipo;
