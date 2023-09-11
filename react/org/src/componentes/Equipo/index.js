@@ -23,6 +23,7 @@ const Equipo = (props) => {
             <Colaborador
             datos={colaborador}
             key={index}
+            colorPrimario={colorPrimario}
             />
             ))}
       </div>
