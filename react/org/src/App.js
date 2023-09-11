@@ -4,10 +4,16 @@ import Header from "./componentes/Header/Header.js";
 import Formulario from "./componentes/Formulario/Formulario.js";
 import MiOrg from "./componentes/MiOrg";
 import Equipo from "./componentes/Equipo";
+import Footer from "./componentes/Footer";
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [colaboradores, actualizarColaboradores] = useState([]);
+  const [colaboradores, actualizarColaboradores] = useState([{
+    equipo: "Front End",
+    foto: "https://github.com/jacob-guerrero.png",
+    nombre: "Jacob Guerrero",
+    puesto: "Desarrollador",
+  }]);
 
   //Ternario -> condicion ? seMuestra : noSeMuestra
   //Condicion && seMuestra
@@ -72,6 +78,7 @@ function App() {
           registrarColaborador={registrarColaborador}
         />
       )}
+
       <MiOrg cambiarMostrar={cambiarMostrar} />
 
       {
@@ -81,6 +88,8 @@ function App() {
         key={equipo.titulo} 
         colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} />))
       }
+
+      <Footer />
     </div>
   );
 }
