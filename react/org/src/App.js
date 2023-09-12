@@ -10,9 +10,33 @@ function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
   const [colaboradores, actualizarColaboradores] = useState([{
     equipo: "Front End",
-    foto: "https://github.com/jacob-guerrero.png",
-    nombre: "Jacob Guerrero",
-    puesto: "Desarrollador",
+    foto: "https://github.com/harlandlohora.png",
+    nombre: "Harland Lohora",
+    puesto: "Instructor"
+  },
+  {
+    equipo: "Programación",
+    foto: "https://github.com/genesysR-dev.png",
+    nombre: "Genesys Rondón",
+    puesto: "Desarrolladora de software e instructora"
+  },
+  {
+    equipo: "UX y Diseño",
+    foto: "https://github.com/JeanmarieAluraLatam.png",
+    nombre: "Jeanmarie Quijada",
+    puesto: "Instructora en Alura Latam"
+  },
+  {
+    equipo: "Programación",
+    foto: "https://github.com/christianpva.png",
+    nombre: "Christian Velasco",
+    puesto: "Head de Alura e Instructor"
+  },
+  {
+    equipo: "Innovación y Gestión",
+    foto: "https://github.com/JoseDarioGonzalezCha.png",
+    nombre: "Jose Gonzalez",
+    puesto: "Dev FullStack"
   }]);
 
   //Ternario -> condicion ? seMuestra : noSeMuestra
@@ -28,6 +52,11 @@ function App() {
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador]);
   };
+
+  //Eliminar Colaborador
+  const eliminarColaborador = () => {
+    console.log("Eliminar Colaborador")
+  }
 
   //Lista de equipos
   const equipos = [
@@ -86,7 +115,9 @@ function App() {
         <Equipo 
         datos={equipo} 
         key={equipo.titulo} 
-        colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} />))
+        colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} 
+        eliminarColaborador={eliminarColaborador}
+        />))
       }
 
       <Footer />
