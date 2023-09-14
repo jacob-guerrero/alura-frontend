@@ -4,6 +4,7 @@ import {AiFillCloseCircle} from "react-icons/ai";
 const Colaborador = (props) => {
   const { nombre, puesto, foto, equipo, id } = props.datos;
   const {colorPrimario, eliminarColaborador} = props;
+  
   return (
     <div className="colaborador">
       <AiFillCloseCircle className="eliminar" onClick={() => eliminarColaborador(id)}/>

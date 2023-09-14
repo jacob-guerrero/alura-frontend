@@ -21,7 +21,7 @@ const Equipo = (props) => {
         type="color"
         className="input-color"
         value={colorPrimario}
-        onChange={(evento) => {actualizarColor(evento.target.value, titulo)}}
+        onChange={(evento) => {actualizarColor(evento.target.value, id)}}
       />
       <h3 style={estiloTitulo}>{titulo}</h3>
       <div className="colaboradores">
