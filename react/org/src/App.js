@@ -16,6 +16,7 @@ function App() {
       foto: "https://github.com/harlandlohora.png",
       nombre: "Harland Lohora",
       puesto: "Instructor",
+      fav: true,
     },
     {
       id: uuid(),
@@ -23,6 +24,7 @@ function App() {
       foto: "https://github.com/genesysR-dev.png",
       nombre: "Genesys Rondón",
       puesto: "Desarrolladora de software e instructora",
+      fav: false,
     },
     {
       id: uuid(),
@@ -30,6 +32,7 @@ function App() {
       foto: "https://github.com/JeanmarieAluraLatam.png",
       nombre: "Jeanmarie Quijada",
       puesto: "Instructora en Alura Latam",
+      fav: false,
     },
     {
       id: uuid(),
@@ -37,6 +40,7 @@ function App() {
       foto: "https://github.com/christianpva.png",
       nombre: "Christian Velasco",
       puesto: "Head de Alura e Instructor",
+      fav: false,
     },
     {
       id: uuid(),
@@ -44,6 +48,7 @@ function App() {
       foto: "https://github.com/JoseDarioGonzalezCha.png",
       nombre: "Jose Gonzalez",
       puesto: "Dev FullStack",
+      fav: false,
     },
   ]);
 
@@ -119,7 +124,9 @@ function App() {
   const actualizarColor = (color, id) => {
     console.log("Actualizar: ", color, id);
     const equiposActualizados = equipos.map((equipo) => {
-      if (equipo.id === id) {equipo.colorPrimario = color};
+      if (equipo.id === id) {
+        equipo.colorPrimario = color;
+      }
 
       return equipo;
     });
@@ -131,6 +138,19 @@ function App() {
   const crearEquipo = (nuevoEquipo) => {
     console.log(nuevoEquipo);
     actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }]);
+  };
+
+  //Like Colaborador
+  const like = (id) => {
+    console.log("like", id);
+    const colaboradoresActualizados = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav;
+      }
+      return colaborador;
+    });
+
+    actualizarColaboradores(colaboradoresActualizados);
   };
 
   return (
@@ -156,6 +176,7 @@ function App() {
           )}
           eliminarColaborador={eliminarColaborador}
           actualizarColor={actualizarColor}
+          like={like}
         />
       ))}
 
