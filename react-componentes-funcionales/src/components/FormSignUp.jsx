@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Switch from "@mui/material/Switch";
@@ -6,7 +6,12 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 function FormSignUp() {
-  const [name, setName] = useState("Jacob");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    console.log("name cambio: ", name);
+  }, [name]);
+
   return (
     <form>
       <TextField
