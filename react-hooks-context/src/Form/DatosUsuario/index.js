@@ -3,22 +3,8 @@ import { TextField, Button, Box } from "@mui/material";
 import { validarEmail, validarPassword } from "./validaciones";
 
 const DatosUsuario = () => {
-  const [email, setEmail] = useState({ value: "jacob@jacob.com", valid: true });
-  const [password, setPassword] = useState({ value: "abc", valid: true });
-
-  /* constructor(props) {
-    super(props);
-    this.state = {
-      email: {
-        value: "",
-        valid: true,
-      },
-      password: {
-        value: "",
-        valid: true,
-      },
-    };
-  } */
+  const [email, setEmail] = useState({ value: "", valid: null });
+  const [password, setPassword] = useState({ value: "", valid: null });
 
   return (
     <Box
@@ -32,6 +18,11 @@ const DatosUsuario = () => {
       }}
       onSubmit={(e) => {
         e.preventDefault();
+        if (email.valid && password.valid) {
+          console.log("Siguiente Formulario");
+        } else {
+          console.log("No hacer nada");
+        }
         console.log(email, password);
       }}
     >
@@ -40,9 +31,12 @@ const DatosUsuario = () => {
         variant="outlined"
         fullWidth
         margin="dense"
+        onBlur={() => validarEmail(email)}
         type="email"
-        error={false}
-        helperText={false && "Ingresa un correo electrónico válido"}
+        error={email.valid === false}
+        helperText={
+          email.valid === false && "Ingresa un correo electrónico válido"
+        }
         value={email.value}
         onChange={(e) => {
           const email = e.target.value;
@@ -56,6 +50,11 @@ const DatosUsuario = () => {
         fullWidth
         margin="dense"
         type="password"
+        error={password.valid === false}
+        helperText={
+          password.valid === false &&
+          "Ingresa un password válido, al menos 8 caracteres y maximo 20"
+        }
         value={password.value}
         onChange={(e) => {
           const password = e.target.value;
